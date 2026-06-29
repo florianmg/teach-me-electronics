@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>0001 - Tension, courant, résistance</title>
+    <link rel="stylesheet" href="../assets/course.css">
+    <script src="../assets/quiz.js" defer></script>
+    <script src="../assets/ohm-playground.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="kicker">Leçon 0001</div>
+        <h1>Tension, courant, résistance</h1>
+        <p class="lede">
+          Objectif: savoir prédire ce qui arrive au courant quand on change la tension ou la résistance.
+          C'est le premier outil mental pour construire et réparer sans deviner.
+        </p>
+      </header>
+
+      <section>
+        <h2>Le modèle minimal</h2>
+        <p>
+          Un circuit simple a besoin d'une source d'énergie, d'un chemin fermé et d'un composant qui utilise
+          l'énergie. Les trois grandeurs à surveiller sont la tension, le courant et la résistance.
+        </p>
+
+        <div class="grid">
+          <article class="fact">
+            <strong>Tension</strong>
+            Ce qui pousse les charges. Symbole: V. Unité: volt.
+          </article>
+          <article class="fact">
+            <strong>Courant</strong>
+            Ce qui circule vraiment dans le circuit. Symbole: I. Unité: ampère.
+          </article>
+          <article class="fact">
+            <strong>Résistance</strong>
+            Ce qui limite le courant. Symbole: R. Unité: ohm.
+          </article>
+        </div>
+
+        <p>
+          Comme en debug logiciel, tu ne veux pas seulement voir que "ça ne marche pas".
+          Tu veux savoir quelle variable change le comportement. Ici, la variable dangereuse pour beaucoup
+          de composants est souvent le courant.
+        </p>
+      </section>
+
+      <section>
+        <h2>La relation à mémoriser</h2>
+        <p>
+          La loi d'Ohm relie les trois grandeurs dans beaucoup de circuits simples :
+        </p>
+        <div class="formula">V = I x R</div>
+        <p>
+          Pour tes premiers projets, la forme la plus utile est souvent <strong>I = V / R</strong> :
+          si la tension augmente, le courant augmente ; si la résistance augmente, le courant baisse.
+        </p>
+        <p>
+          Source de référence :
+          <a href="https://learn.sparkfun.com/tutorials/voltage-current-resistance-and-ohms-law/all">SparkFun</a>
+          et
+          <a href="https://www.allaboutcircuits.com/textbook/direct-current/">All About Circuits</a>.
+        </p>
+      </section>
+
+      <section class="tool" aria-label="Simulateur de loi d'Ohm">
+        <h2>Manipule le courant</h2>
+        <p>
+          Bouge les curseurs. Ne cherche pas à calculer mentalement tout de suite : observe d'abord la direction
+          du changement.
+        </p>
+
+        <div class="row">
+          <label for="voltage">Tension</label>
+          <input id="voltage" data-ohm-voltage type="range" min="1" max="12" step="0.5" value="5">
+          <output data-ohm-voltage-value for="voltage">5.0 V</output>
+        </div>
+
+        <div class="row">
+          <label for="resistance">Résistance</label>
+          <input id="resistance" data-ohm-resistance type="range" min="100" max="2000" step="100" value="1000">
+          <output data-ohm-resistance-value for="resistance">1000 Ω</output>
+        </div>
+
+        <div class="meter">
+          Courant estimé: <span data-ohm-current-value>5.0 mA</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Test de récupération</h2>
+        <p>Réponds sans remonter lire le texte. Le but est de renforcer la mémoire, pas d'aller vite.</p>
+
+        <div class="tool quiz" data-quiz data-correct="resistance" data-good="Correct: plus de résistance limite davantage le courant." data-bad="Pas encore: pense à I = V / R.">
+          <h3>À tension égale, que faut-il augmenter pour réduire le courant ?</h3>
+          <div class="quiz-options">
+            <button type="button" data-answer="voltage">La tension électrique</button>
+            <button type="button" data-answer="current">Le courant électrique</button>
+            <button type="button" data-answer="resistance">La résistance électrique</button>
+          </div>
+          <p class="feedback" data-feedback></p>
+        </div>
+
+        <div class="tool quiz" data-quiz data-correct="current" data-good="Correct: c'est le courant qui traverse le composant." data-bad="Pas encore: la tension pousse, la résistance limite, le courant traverse.">
+          <h3>Quelle grandeur traverse vraiment un composant ?</h3>
+          <div class="quiz-options">
+            <button type="button" data-answer="current">Le courant électrique</button>
+            <button type="button" data-answer="voltage">La tension électrique</button>
+            <button type="button" data-answer="resistance">La résistance électrique</button>
+          </div>
+          <p class="feedback" data-feedback></p>
+        </div>
+      </section>
+
+      <section class="callout">
+        <h2>Mini-victoire</h2>
+        <p>
+          Si tu retiens seulement ceci aujourd'hui : dans un circuit simple, la résistance sert souvent à
+          limiter le courant. C'est pour cela qu'on mettra bientôt une résistance avec une LED.
+        </p>
+      </section>
+
+      <section>
+        <h2>Pour continuer</h2>
+        <p>
+          Garde sous la main la
+          <a href="../reference/0001-vocabulaire-base.html">référence vocabulaire de base</a>.
+          Lis ensuite la section d'introduction de
+          <a href="https://learn.sparkfun.com/tutorials/voltage-current-resistance-and-ohms-law/all">SparkFun</a>,
+          puis reviens me poser une question sur ce qui reste flou.
+        </p>
+      </section>
+
+      <footer>
+        Leçon suivante conseillée: pourquoi une LED a besoin d'une résistance.
+      </footer>
+    </main>
+  </body>
+</html>
