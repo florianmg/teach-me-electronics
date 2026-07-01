@@ -143,6 +143,16 @@ input[type="range"] {
   width: 100%;
 }
 
+select {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  font: 700 0.96rem ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 44px;
+  padding: 8px 10px;
+}
+
 .meter {
   background: #ecf6f2;
   border: 1px solid #bdd9cf;
@@ -156,6 +166,39 @@ input[type="range"] {
   display: grid;
   gap: 10px;
   margin-top: 12px;
+}
+
+.choice-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 16px 0;
+}
+
+.diagram {
+  align-items: center;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto auto 1fr auto auto;
+  margin: 18px 0;
+  padding: 16px;
+}
+
+.symbol {
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  font: 700 0.95rem ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-width: 58px;
+  padding: 8px 10px;
+  text-align: center;
+}
+
+.wire {
+  border-top: 2px solid var(--line);
+  min-width: 40px;
 }
 
 button {
@@ -172,6 +215,12 @@ button {
 
 button:hover {
   border-color: var(--accent);
+}
+
+button.selected {
+  background: #ecf6f2;
+  border-color: var(--accent);
+  color: var(--accent-dark);
 }
 
 button.correct {
@@ -210,6 +259,19 @@ footer {
 
   .row {
     grid-template-columns: 1fr;
+  }
+
+  .choice-grid,
+  .diagram {
+    grid-template-columns: 1fr;
+  }
+
+  .wire {
+    border-left: 2px solid var(--line);
+    border-top: 0;
+    justify-self: center;
+    min-height: 28px;
+    min-width: 0;
   }
 }
 

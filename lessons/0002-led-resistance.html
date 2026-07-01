@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>0002 - Pourquoi une LED a besoin d'une résistance</title>
+    <link rel="stylesheet" href="../assets/course.css">
+    <script src="../assets/quiz.js" defer></script>
+    <script src="../assets/led-resistor-calculator.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="kicker">Leçon 0002</div>
+        <h1>Pourquoi une LED a besoin d'une résistance</h1>
+        <p class="lede">
+          Objectif: choisir une résistance qui protège une LED. C'est ta première application concrète
+          de la loi d'Ohm sur un composant réel.
+        </p>
+      </header>
+
+      <section>
+        <h2>Le problème</h2>
+        <p>
+          Une LED est une diode qui émet de la lumière quand elle est branchée dans le bon sens. Elle ne se
+          comporte pas comme une petite ampoule: une fois allumée, une petite hausse de tension peut faire
+          grimper le courant très vite.
+        </p>
+        <p>
+          La résistance en série joue le rôle de limiteur. Elle utilise la tension restante et transforme
+          cette tension en un courant prévisible. Pour une petite LED de kit, viser 5 à 10 mA est souvent
+          assez lumineux pour apprendre sans pousser le composant.
+        </p>
+
+        <div class="diagram" aria-label="Circuit LED avec résistance">
+          <span>+ source</span>
+          <span class="symbol">R</span>
+          <span class="wire"></span>
+          <span class="symbol">LED</span>
+          <span>- source</span>
+        </div>
+
+        <p>
+          Source de référence:
+          <a href="https://learn.adafruit.com/all-about-leds/overview">Adafruit, All About LEDs</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2>Le calcul utile</h2>
+        <p>
+          La LED consomme une partie de la tension: c'est sa tension directe, souvent notée Vf.
+          La résistance reçoit ce qui reste.
+        </p>
+        <div class="formula">R = (V_source - V_LED) / I_cible</div>
+        <p>
+          Exemple avec une source 5 V, une LED rouge autour de 1,8 V et un courant cible de 10 mA:
+        </p>
+        <div class="formula">R = (5 - 1,8) / 0,010 = 320 Ω</div>
+        <p>
+          Dans un kit, tu n'auras pas toujours 320 Ω. Prends la valeur courante juste au-dessus:
+          330 Ω est un bon choix.
+        </p>
+      </section>
+
+      <section class="tool" aria-label="Calculateur de résistance pour LED">
+        <h2>Choisis une résistance</h2>
+        <p>
+          Change la source, la couleur et le courant. Puis clique une résistance de kit pour voir si elle
+          protège correctement la LED.
+        </p>
+
+        <div class="row">
+          <label for="source-voltage">Source</label>
+          <input id="source-voltage" data-led-source-voltage type="range" min="3" max="12" step="0.5" value="5">
+          <output data-led-source-voltage-value for="source-voltage">5.0 V</output>
+        </div>
+
+        <div class="row">
+          <label for="led-current">Courant cible</label>
+          <input id="led-current" data-led-target-current type="range" min="2" max="20" step="1" value="10">
+          <output data-led-target-current-value for="led-current">10 mA</output>
+        </div>
+
+        <div class="row">
+          <label for="led-color">Couleur</label>
+          <select id="led-color" data-led-color>
+            <option value="red">Rouge, Vf 1,8 V</option>
+            <option value="green">Verte, Vf 2,1 V</option>
+            <option value="blue">Bleue, Vf 3,2 V</option>
+            <option value="white">Blanche, Vf 3,2 V</option>
+          </select>
+          <output data-led-forward-voltage-value for="led-color">1.8 V</output>
+        </div>
+
+        <div class="grid">
+          <article class="fact">
+            <strong>Résistance calculée</strong>
+            <span data-led-required-resistance-value>320 Ω</span>
+          </article>
+          <article class="fact">
+            <strong>Valeur courante</strong>
+            <span data-led-suggested-resistance-value>330 Ω</span>
+          </article>
+          <article class="fact">
+            <strong>Règle pratique</strong>
+            Arrondis vers le haut pour réduire le courant.
+          </article>
+        </div>
+
+        <div class="choice-grid" aria-label="Résistances disponibles">
+          <button type="button" data-led-resistor="100">100 Ω</button>
+          <button type="button" data-led-resistor="220">220 Ω</button>
+          <button type="button" data-led-resistor="330" class="selected">330 Ω</button>
+          <button type="button" data-led-resistor="1000">1 kΩ</button>
+        </div>
+
+        <div class="meter" data-led-result>
+          330 Ω est un bon choix ici: environ 9.7 mA dans la LED.
+        </div>
+      </section>
+
+      <section>
+        <h2>Mini-pratique avec ton kit</h2>
+        <ol>
+          <li>Utilise seulement une pile, un pack de piles ou une sortie basse tension de kit. Pas de secteur.</li>
+          <li>Place une résistance en série avec la LED: le courant doit traverser la résistance et la LED.</li>
+          <li>Commence avec 330 Ω ou 1 kΩ si ta source est 5 V.</li>
+          <li>Si la LED ne s'allume pas, retourne-la: une LED ne conduit que dans le bon sens.</li>
+          <li>Si elle est très faible, baisse la résistance prudemment, sans descendre sous le calcul.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Test de récupération</h2>
+        <p>Réponds sans remonter lire le texte. Le but est de récupérer le raisonnement, pas de deviner.</p>
+
+        <div class="tool quiz" data-quiz data-correct="series" data-good="Correct: en série, la résistance limite le courant de la LED." data-bad="Pas encore: le courant doit traverser la résistance puis la LED.">
+          <h3>Où placer la résistance pour protéger une LED simple ?</h3>
+          <div class="quiz-options">
+            <button type="button" data-answer="series">En série avec elle</button>
+            <button type="button" data-answer="parallel">En parallèle total</button>
+            <button type="button" data-answer="absent">Sans autre composant</button>
+          </div>
+          <p class="feedback" data-feedback></p>
+        </div>
+
+        <div class="tool quiz" data-quiz data-correct="higher" data-good="Correct: plus haut réduit le courant et protège davantage." data-bad="Pas encore: plus de résistance donne moins de courant.">
+          <h3>Si le calcul donne 320 Ω et que ton kit propose 330 Ω ou 220 Ω, que choisis-tu d'abord ?</h3>
+          <div class="quiz-options">
+            <button type="button" data-answer="higher">330 Ω, plus haut</button>
+            <button type="button" data-answer="lower">220 Ω, plus bas</button>
+            <button type="button" data-answer="none">0 Ω, direct LED</button>
+          </div>
+          <p class="feedback" data-feedback></p>
+        </div>
+      </section>
+
+      <section class="callout">
+        <h2>Mini-victoire</h2>
+        <p>
+          Tu sais maintenant transformer une tension de source en courant de LED. C'est le même geste mental
+          que tu réutiliseras pour lire des schémas et diagnostiquer des composants qui chauffent ou grillent.
+        </p>
+      </section>
+
+      <section>
+        <h2>Pour continuer</h2>
+        <p>
+          Garde sous la main la
+          <a href="../reference/0001-vocabulaire-base.html">référence vocabulaire de base</a>
+          et la
+          <a href="../reference/0002-led-resistance.html">référence LED et résistance</a>.
+          Si la formule ne revient pas vite, reprends
+          <a href="./0001-tension-courant-resistance.html">la leçon 0001</a>.
+          Si une étape du montage est floue, reviens me poser une question avant d'alimenter le circuit.
+        </p>
+      </section>
+
+      <footer>
+        Leçon suivante conseillée: lire les anneaux de couleur d'une résistance et vérifier au multimètre.
+      </footer>
+    </main>
+  </body>
+</html>

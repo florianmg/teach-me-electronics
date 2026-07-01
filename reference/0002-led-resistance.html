@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Référence - LED et résistance série</title>
+    <link rel="stylesheet" href="../assets/course.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="kicker">Référence 0002</div>
+        <h1>LED et résistance série</h1>
+        <p class="lede">La fiche courte pour choisir une résistance qui limite le courant d'une LED.</p>
+      </header>
+
+      <section class="grid" aria-label="Points clés">
+        <article class="fact">
+          <strong>LED</strong>
+          Diode qui s'allume dans le bon sens et possède une tension directe Vf.
+        </article>
+        <article class="fact">
+          <strong>Résistance série</strong>
+          Composant placé sur le même chemin que la LED pour limiter le courant.
+        </article>
+        <article class="fact">
+          <strong>Courant prudent</strong>
+          Pour apprendre avec une petite LED de kit, vise souvent 5 à 10 mA.
+        </article>
+      </section>
+
+      <h2>Formule</h2>
+      <div class="formula">R = (V_source - V_LED) / I_cible</div>
+      <p>
+        Convertis les milliampères en ampères avant le calcul: 10 mA = 0,010 A.
+        Si la valeur exacte n'existe pas dans ton kit, prends la valeur courante juste au-dessus.
+      </p>
+
+      <h2>Repères de tension directe</h2>
+      <ul>
+        <li>LED rouge: environ 1,8 V.</li>
+        <li>LED verte: environ 2,1 V.</li>
+        <li>LED bleue ou blanche: environ 3,2 V.</li>
+      </ul>
+
+      <h2>Exemple</h2>
+      <p>Source 5 V, LED rouge 1,8 V, courant cible 10 mA:</p>
+      <div class="formula">R = (5 - 1,8) / 0,010 = 320 Ω</div>
+      <p>Choix pratique: 330 Ω.</p>
+
+      <h2>Sécurité</h2>
+      <p>
+        Reste sur des piles ou sorties basse tension de kit. Ne travaille pas sur le secteur.
+        Si la LED ne s'allume pas, coupe l'alimentation puis vérifie le sens de la LED.
+      </p>
+
+      <h2>Source primaire</h2>
+      <p>
+        Pour revoir le raisonnement complet:
+        <a href="https://learn.adafruit.com/all-about-leds/overview">Adafruit, All About LEDs</a>.
+      </p>
+    </main>
+  </body>
+</html>

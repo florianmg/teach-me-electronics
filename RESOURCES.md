@@ -8,6 +8,8 @@
   Manuel gratuit et structuré sur les circuits en courant continu. Use for: vérifier les notions fondamentales et approfondir après les leçons courtes.
 - [SparkFun: How to Use a Multimeter](https://learn.sparkfun.com/tutorials/how-to-use-a-multimeter/all)
   Guide pratique pour mesurer tension, résistance et courant. Use for: préparer les premières réparations et diagnostics.
+- [Adafruit: All About LEDs](https://learn.adafruit.com/all-about-leds/overview)
+  Guide débutant sur les LED, leur tension directe, la résistance série et le calcul du courant. Use for: choisir une résistance de protection pour une LED.
 - [Arduino Docs: Built-in Examples](https://docs.arduino.cc/built-in-examples/)
   Exemples officiels pour relier électronique et programmation. Use for: transition future entre circuits simples et code embarqué.
 
